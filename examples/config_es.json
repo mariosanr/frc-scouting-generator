@@ -1,0 +1,47 @@
+{
+    "tba_token": "",
+
+    "team_code": "5948",
+    "team_name": "Lebotics",
+    "event_name": "Monterrey",
+    "year": "2024",
+    "event_key": "2024mxmo",
+
+    "spreadsheet_url": "",
+    "language": "es",
+    "timezone": "",
+
+    "num_matches": "10",
+    "observations": {
+        "autonomous": {
+            "__name__": "AUTONOMO",
+            "CRUZA LINEA": {"type": "YES_OR_NO"},
+            "RECOGE PIEZA": {"type": "YES_OR_NO"},
+            "AMP": {"type": "EVERY_MATCH"},
+            "SPEAKER": {"type": "EVERY_MATCH"}
+        },
+        "teleop": {
+            "__name__": "TELEOPERADO",
+            "AMP": {"type": "EVERY_MATCH"},
+            "SPEAKER": {"type": "EVERY_MATCH"},
+            "INTAKE": {"type": "OPTIONS", "options": ["Arriba","Suelo","Ambos","No tiene"]},
+            "TRAP": {"type": "EVERY_MATCH"},
+            "CADENA": {"type": "EVERY_MATCH"},
+            "OFENSA O DEFENSA": {"type": "OPTIONS", "options": ["Ofensa","Defensa","Ambos"]}
+        },
+        "misc": {
+            "__name__": "MISCELANEO",
+            "FALTAS": {"type": "PARAGRAPH"},
+            "COMENTARIOS": {"type": "PARAGRAPH"}
+        }
+    },
+    "sheets": {
+        "teams": {"name": "Equipos", "update": true},
+        "match_order": {"name": "Partidas", "update": true},
+        "scouting": {"name": "Scouting", "update": true},
+        "quals": {"name": "Quals", "update": true},
+        "advanced_stats": {"name": "Estadisticas Avanzadas", "update": true},
+        "ranking": {"name": "Ranking", "update": true},
+        "compare": {"name": "Comparar", "update": true}
+    }
+}

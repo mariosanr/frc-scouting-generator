@@ -1,0 +1,205 @@
+.template_cont{
+    display: flex;
+    position: sticky;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 200px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(114, 114, 114);
+    z-index: 2;
+}
+
+
+
+.container {
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid rgb(75, 75, 75);
+    margin: 10px;
+}
+
+.row {
+    display: flex;
+    flex: 1;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.row:hover {
+    background-color: rgba(240, 240, 240, 0.3);
+}
+
+.name_cell {
+    flex: 1;
+    text-align: right;
+}
+
+.observation_label {
+    margin-left: 30%;
+    padding-right: 5px;
+    pointer-events: none;
+    flex-wrap: wrap;
+}
+
+.field_cell {
+    flex: 1;
+    max-width: 160px;
+    max-height: 20px;
+    margin-right: 35%;
+    margin-left: 15px;
+    padding-left: 5px;
+}
+
+.left {
+    flex: 1;
+    display: flex;
+    border-right: 1px solid rgb(75, 75, 75);
+    align-items: center;
+    justify-content: center;
+    margin: 20px 15px 20px 0px;
+}
+
+.title {
+    font-size: x-large;
+}
+  
+.right {
+    flex: 3;
+}
+
+.subtitle {
+    font-size: larger;
+}
+
+.observations {
+    display: flex;
+    flex-direction: column;
+}
+
+.vert_obs_cont {
+    display: flex;
+    flex-direction: column;
+}
+
+.vert_obs_cont:hover {
+    background-color: rgba(240, 240, 240, 0.3);
+}
+
+.options_input {
+    margin: 5px 22% 15px 22%;
+    padding: 5px;
+}
+
+.observation {
+    position: relative;
+}
+
+.control_buttons {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    width: 20%;
+}
+
+.arrow_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 2;
+    margin-right: 5px;
+}
+
+.arrows {
+    padding: 2px 10px;
+    margin: 1px;
+    border: none;
+    border-radius: 3px;
+}
+
+.trash {
+    flex: 1;
+    border: none;
+    border-radius: 3px;
+    font-size: xx-large;
+}
+
+.trash:hover {
+    background-color: rgb(223, 72, 72);
+}
+
+.trash:active {
+    background-color: rgb(236, 140, 140);
+}
+
+
+.add_button {
+    background-color: rgba(240, 240, 240, 0.75);
+    text-align: center;
+    align-self: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 25%;
+    border: none;
+    border-radius: 5px;
+}
+
+.add_button:hover, .arrows:hover {
+    background-color: rgb(220, 220, 220);
+}
+
+.add_button:active, .arrows:active {
+    background-color: rgb(240, 240, 240);
+}
+
+
+.submit_button_cont {
+    display: flex;
+    padding-bottom: 10px;
+    padding-top: 20px;
+    border-top: 1px solid rgb(75, 75, 75);
+    margin: 10px;
+    justify-content: center;
+}
+
+
+.console_text {
+    padding: 20px;
+    margin: 0 10%;
+    background-color: rgb(47, 47, 47);
+    color: white;
+}
+
+.api_cont {
+    display: flex;
+    margin: 20px 10px 0 10px;
+    padding: 5px 0;
+    flex-direction: row;
+    border-top: 1px solid rgb(75, 75, 75);
+    justify-content: center;
+    align-items: center;
+}
+
+
+a:link {
+    color: rgb(72, 172, 234);
+  }
+  
+  a:visited {
+    color: rgb(36, 81, 172);
+  }
+  
+  a:hover {
+    color: rgb(91, 20, 198);
+  }
+  
+  a:active {
+    color: rgb(46, 141, 218);
+  }

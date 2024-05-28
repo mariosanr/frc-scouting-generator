@@ -1,0 +1,47 @@
+{
+    "tba_token": "",
+
+    "team_code": "254",
+    "team_name": "TheCheesyPoofs",
+    "event_name": "Sacramento",
+    "year": "2024",
+    "event_key": "2024cada",
+    
+    "spreadsheet_url": "",
+    "language": "en",
+    "timezone": "",
+
+    "num_matches": "10",
+    "observations": {
+        "autonomous": {
+            "__name__": "AUTONOMOUS",
+            "CROSSES LINE": {"type": "YES_OR_NO"},
+            "PICKS UP PIECE": {"type": "YES_OR_NO"},
+            "AMP": {"type": "EVERY_MATCH"},
+            "SPEAKER": {"type": "EVERY_MATCH"}
+        },
+        "teleop": {
+            "__name__": "TELEOPERATED",
+            "AMP": {"type": "EVERY_MATCH"},
+            "SPEAKER": {"type": "EVERY_MATCH"},
+            "INTAKE": {"type": "OPTIONS", "options": ["Human Player","Ground","Both","Doesnt have"]},
+            "TRAP": {"type": "EVERY_MATCH"},
+            "CHAIN": {"type": "EVERY_MATCH"},
+            "OFFENSE OR DEFENSE": {"type": "OPTIONS", "options": ["Offense","Defense","Both"]}
+        },
+        "misc": {
+            "__name__": "MISCELLANEOUS",
+            "VIOLATIONS": {"type": "PARAGRAPH"},
+            "COMMENTS": {"type": "PARAGRAPH"}
+        }
+    },
+    "sheets": {
+        "teams": {"name": "Teams", "update": true},
+        "match_order": {"name": "Matches", "update": true},
+        "scouting": {"name": "Scouting", "update": true},
+        "quals": {"name": "Quals", "update": true},
+        "advanced_stats": {"name": "Advanced Stats", "update": true},
+        "ranking": {"name": "Ranking", "update": true},
+        "compare": {"name": "Compare", "update": true}
+    }
+}

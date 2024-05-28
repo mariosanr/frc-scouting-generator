@@ -1,0 +1,13 @@
+venv/
+__pycache__/
+
+
+*test*
+src/apis/frc.py
+
+credentials.json
+token.json
+config.json
+original_config.json
+
+backend_req.txt

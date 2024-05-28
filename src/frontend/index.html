@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scouting Spreadsheet Creator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="template_cont" id="template_box">
+        <p style="color: white;">
+            Choose a template to preload some values. If you choose a template you can still change everything if you wish.<br> 
+            Choose 'None' if you prefer to start from zero.
+        </p>
+        <div id="template_buttons">
+            <button type="button" id="template_en">English Template</button>
+            <button type="button" id="template_es">Spanish Template</button>
+            <button type="button" id="no_template">None</button>
+        </div>
+    </div>
+    <p>Please fill out the following fields to customize the spreadsheet that will be created. </p>
+    
+    <form name="form1" onSubmit="return handleSubmit()" onkeydown="if(event.keyCode === 13) return false;  " >
+        <div class="container" id="credentials_cont">
+        <div class="left">
+            <p class="title">Credentials/API Config</p>
+        </div>
+        <div class="right" id="credentials">
+            <div class="row">
+                <p>
+                    You were asked to give permissions regarding editting spreadsheets in your Google Drive. 
+                    If it did not open automically, you should find it in a tab in your browser.
+                    This is necessary for the functionality of the application.
+                </p>
+            </div>
+            <div class="row">
+                <label for="tba_token" class="name_cell">The Blue Alliance Token*:<br>
+                (To get an API token, head to https://www.thebluealliance.com/account and add a new key in the 'Read API Keys' section)</label>
+                <input type="text" class="field_cell" name="tba_token" id="tba_token" placeholder="X-TBA-Auth-Key">
+            </div>
+        </div>
+        </div>
+
+
+        <div class="container" id="basic_settings_cont">
+        <div class="left">
+            <p class="title">Basic Settings</p>
+        </div>
+        <div class="right" id="basic_settings">
+            <div class="row">
+                <label for="team_code" class="name_cell">Team Code*:</label>
+                <input type="text" class="field_cell" name="team_code" id="team_code" placeholder="254" required>
+            </div>
+            <div class="row">
+                <label for="team_name" class="name_cell">Team Name:<br>(Used only to name the file)</label>
+                <input type="text" class="field_cell" name="team_name" id="team_name" placeholder="TheCheesyPoofs">
+            </div>
+            <div class="row">
+                <label for="event_name" class="name_cell">Event Name:<br>(Used only to name the file)</label>
+                <input type="text" class="field_cell" name="event_name" id="event_name" placeholder="Sacramento">
+            </div>
+            <div class="row">
+                <label for="year" class="name_cell">Year:<br>(Used to name the file and is necessary to show the corresponding events if the event key is not set)</label>
+                <input type="text" class="field_cell" name="year" id="year" maxlength="4" placeholder="2024" required>
+            </div>
+            <div class="row">
+                <label for="event_key" class="name_cell">Event Key:<br>(If not set, you will be shown the events your team is attending and their respective key)</label>
+                <input type="text" class="field_cell" name="event_key" id="event_key" placeholder="2024cada">
+            </div>
+            <div class="row">
+                <label for="spreadsheet_url" class="name_cell">Spreadsheet URL:<br>(Set only if editting existing spreadsheet. Leave empty to create a new one)</label>
+                <input type="url" class="field_cell" name="spreadsheet_url" id="spreadsheet_url">
+            </div>
+            <div class="row">
+                <label for="language" class="name_cell">Language*:<br>(Changes the language of the spreadsheet template (what is created automatically) and translates the default sheet names below)</label>
+                <select class="field_cell" name="language" id="language">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                </select>
+            </div>
+            <div class="row">
+                <label for="timezone" class="name_cell">Timezone:<br>(Used to show the match schedules. If not set, the timezone provided by FRC will be used. <a href="https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568" target="_blank">List of available timezones</a>)</label>
+                <input type="text" class="field_cell" name="timezone" id="timezone">
+            </div>
+        </div>
+        </div>
+        
+
+        <div class="container" id="observations_cont">
+        <div class="left">
+            <p class="title">Observations</p>
+        </div>
+        <div class="right" id="observations">
+            <div class="row">
+                <label for="num_matches" class="name_cell">Number of Matches Played per Team:<br>(Number of matches that you will manually scout per team. Used in observations of type 'Every Match') </label>
+                <input type="number" class="field_cell" name="num_matches" id="num_matches" placeholder="10">
+            </div>
+            <div class="row">
+                <p>
+                    - The following observations are what you are going to scout manually. They will be used in the 'Quals' sheet. <br>
+                    - In the 'Options' observations, write the options separated by commas inside the textbox that appears. <br>
+                </p>
+            </div>
+            <p>
+                <p class="subtitle" style="text-decoration: underline;" id="autonomous_subtitle">AUTONOMOUS</p>
+            </p>
+            <div class="observations" id="autonomous_container">
+                <!-- Observations are inserted here -->
+                <button type="button" class="add_button" id="autonomous">+</button>
+            </div>
+            <p>
+                <p class="subtitle" style="text-decoration: underline;" id="teleop_subtitle">TELEOPERATED</p>
+            </p>
+            <div class="observations" id="teleop_container">
+                <!-- Observations are inserted here -->
+                <button type="button" class="add_button" id="teleop">+</button>
+            </div>
+            <p>
+                <p class="subtitle" style="text-decoration: underline;" id="misc_subtitle">MISCELLANEOUS</p>
+            </p>
+            <div class="observations" id="misc_container">
+                <!-- Observations are inserted here -->
+                <button type="button" class="add_button" id="misc">+</button>
+            </div>
+        </div>
+        </div>
+
+        <div class="container" id="sheets_cont">
+        <div class="left">
+            <p class="title">Sheets</p>
+        </div>
+        <div class="right" id="sheets">
+            <div class="row">
+                <p>
+                    - Check the checkboxes according to which sheets you want to create/update. <br>
+                    - The value in the textbox will be the visible name of the sheet that appears in the spreadsheet. <br>
+                    - You don't have to create every sheet necessarily, but some are obligatory (grayed out) depending on which others you want. Creating all of them is recommended. <br>
+                    - You can also create them later, or erase them and create them again as you please. <br>
+                    - When editting an existing spreadsheet, these prerequisite sheets are not grayed out; however, if they don't exist in the spreadsheet, an error will be raised and/or the sheet will not be created correctly. <br>
+                    - To update the sheets once they have been created, you need to set the 'Spreadsheet URL' field above.<br>
+                    - To rename a sheet once it has been created, you can directly change it in Google Sheets. The same goes for the title of the spreadsheet. <br>
+                    - If the sheet was already created, only check it if you want to update the information in it.<br>
+                    - Beware, updating a sheet may erase any information you may have added after its creation. <br>
+                    - Normally, once created, you would only need to update the advanced stats sheet every once in a while. <br>
+                </p>
+            </div>
+            <p>
+                <p class="subtitle"><u>Sheets</u></p>
+            </p>
+            <div class="row">
+                <div class="name_cell">
+                    <input type="checkbox" name="check_teams" id="sheet_check_teams" checked disabled>
+                    <label for="sheet_name_teams">Teams:</label>
+                </div>
+                <input type="text" class="field_cell" name="name_teams" id="sheet_name_teams" value="Teams" required>
+            </div>
+            <div class="row">
+                <div class="name_cell">
+                    <input type="checkbox" name="check_match_order" id="sheet_check_match_order" checked disabled>
+                    <label for="sheet_name_match_order">Match Order:</label>
+                </div>
+                <input type="text" class="field_cell" name="name_match_order" id="sheet_name_match_order" value="Matches" required>
+            </div>
+            <div class="row">
+                <div class="name_cell">
+                    <input type="checkbox" name="check_scouting" id="sheet_check_scouting" checked>
+                    <label for="sheet_name_scouting">Scouting:</label>
+                </div>
+                <input type="text" class="field_cell" name="name_scouting" id="sheet_name_scouting" value="Scouting" required>
+            </div>
+            <div class="row">
+                <div class="name_cell">
+                    <input type="checkbox" name="check_quals" id="sheet_check_quals" checked>
+                    <label for="sheet_name_quals">Quals:</label>
+                </div>
+                <input type="text" class="field_cell" name="name_quals" id="sheet_name_quals" value="Quals" required>
+            </div>
+            <div class="row">
+                <div class="name_cell">
+                    <input type="checkbox" name="check_advanced_stats" id="sheet_check_advanced_stats" checked disabled>
+                    <label for="sheet_name_advanced_stats">Advanced Stats:</label>
+                </div>
+                <input type="text" class="field_cell" name="name_advanced_stats" id="sheet_name_advanced_stats" value="Advanced Stats" required>
+            </div>
+            <div class="row">
+                <div class="name_cell">
+                    <input type="checkbox" name="check_ranking" id="sheet_check_ranking" checked>
+                    <label for="sheet_name_ranking">Ranking:</label>
+                </div>
+                <input type="text" class="field_cell" name="name_ranking" id="sheet_name_ranking" value="Ranking" required>
+            </div>
+            <div class="row">
+                <div class="name_cell">
+                    <input type="checkbox" name="check_compare" id="sheet_check_compare" checked>
+                    <label for="sheet_name_compare">Compare:</label>
+                </div>
+                <input type="text" class="field_cell" name="name_compare" id="sheet_name_compare" value="Compare" required>
+            </div>
+        </div>
+        </div>
+
+
+        <div class="submit_button_cont">
+            <button type="submit" id="submit_button">Create & Save</button>
+            <button type="button" id="save_button" style="margin-left: 7px;">Save</button>
+        </div>
+    </form>
+    <p class="console_text" id="console_messages">
+        Output:
+    </p>
+    <div class="api_cont">
+        <p style="font-size: large;">
+            Powered by 
+            <a href="https://www.thebluealliance.com" target="_blank">
+                The Blue Alliance <img src="/images/tba_logo.png" style="height: 16px; width: 16px;"></a>
+            |
+            <a href="https://www.statbotics.io/" target="_blank">
+                Statbotics <img src="/images/statbotics_logo.png" style="height: 16px; width: 16px;"></a>
+            |
+            <a href="https://developers.google.com/sheets/api/reference/rest" target="_blank">
+                Google Sheets API <img src="/images/sheets_logo.png" style="height: 16px; width: 16px;"></a>  
+        </p>
+    </div>
+<script type="text/javascript" src="/eel.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
