@@ -2,7 +2,15 @@
 The FRC Scouting Generator is a tool developed originally for team 5948 to automate the creation of the spreadsheet used for scouting. Since every year the competition changes, it is not possible to use the same template for each year, though it does stay similar in many aspects. Plus, there is a lot of "busy" work, like filling out the teams and the schedule. With this application you can generate a Google Sheets spreadsheet that lives in your Google Drive that can be easily shared with the rest of the team. Thanks to the [Google Sheets API](https://developers.google.com/sheets/api/reference/rest), you can create a spreadsheet for each event your team attends within seconds. With the help of [The Blue Alliance API](https://www.thebluealliance.com/apidocs/v3) and the [Statbotics API](https://www.statbotics.io/api/rest), you will automatically get advanced statistics on each team present in the competition, with which you can pretty accurately predict performance. However, your are not restricted to these stats. The main customizability comes from the 'Quals' sheet, where you can specify the observations you will be looking for in each team, so that your team can also manually scout with ease. Combining all the information collected through manual scouting and the advanced stats, you should be able to have a great idea of the performance and the potential of each team, being useful when picking alliances but also when trying to outplay your oponents.
 
 ## Use
-Download the latest release. Run the executable, read and fill out the prompts according to your needs, and click the button at the bottom that says "Create and Save". It is recommended to start by using one of the templates that are offered. If you wish to save your configuration without creating a spreadsheet you can also just click "Save". Next time you open the app it will prompt you if you want to recover the previous session, along with some predefined templates.
+Download the latest release and extract the folder. Before running the executable, you are going to need to set up the Google Sheets API and The Blue Alliance API.
+
+For the Google Sheets API, you need to setup a Google Cloud Project with access to the Google Sheets API. Create a new project [here](https://console.cloud.google.com/projectcreate); enable the Google Sheets API; configure the OAuth consent screen: add the Google Sheets API scope (/auth/spreadsheets) and add the email of whoever is going to use the app as a 'Test user' (there can be multiple); create the credentials for a OAuth client ID for a desktop application; download the JSON with the credentials, rename the file to credentials.json and move it to the root of the '_internal' folder you unzipped.
+
+A more detailed tutorial on how to create the necessary Google Cloud Project can be found [here](https://developers.google.com/sheets/api/quickstart/python)
+
+For The Blue Alliance API, get an API token [here](https://www.thebluealliance.com/account) by adding a new key in the 'Read API Keys' section (the name does not matter). When you run the exectuable, you will need the X-TBA-Auth-Key that it gives you when creating the key.
+
+Run 'Scouting_Generator.exe', read and fill out the prompts according to your needs, and click the button at the bottom that says "Create and Save". It is recommended to start by using one of the templates that are offered. If you wish to save your configuration without creating a spreadsheet you can also just click "Save". Next time you open the app it will prompt you if you want to recover the previous session, along with the predefined templates.
 
 Once a spreadsheet has been created, you can update it anytime. If you erased a sheet, if you never created it in the first place, or if you wish to update the content in it, just include the URL for the spreadsheet inside the configuration and indicate which sheets you wish to update/create. The main use of this would be to update the statistics retrieved from Statbotics and The Blue Alliance. This is done by updating the 'Advanced Stats' sheet.
 
@@ -37,11 +45,9 @@ It is recommended to use a Virtual Environment. The version of Python used in th
 python -m venv /path/to/new/virtual/environment
 ```
 
+You will also need to set up the Google Cloud Project. The instructions for that are found [here](#use). Move the credentials.json file to the root of this folder.
+
 To run the GUI_main.py file (which is the one that creates the GUI app), you need to be inside the 'src' folder.
-
-You will also need to set up a Google Cloud Project. Create the project, enable the Google Sheets API, configure the OAuth consent screen, create credentials for a desktop application, download the JSON with the credentials, rename the file to credentials.json and move it to the root of the project folder.
-
-You can find a more detailed guide of this process [here](https://developers.google.com/sheets/api/quickstart/python).
 
 If you wish to contribute, please contact me through GitHub or email.
 
