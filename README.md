@@ -14,6 +14,8 @@ Run 'Scouting_Generator.exe', read and fill out the prompts according to your ne
 
 Once a spreadsheet has been created, you can update it anytime. If you erased a sheet, if you never created it in the first place, or if you wish to update the content in it, just include the URL for the spreadsheet inside the configuration and indicate which sheets you wish to update/create. The main use of this would be to update the statistics retrieved from Statbotics and The Blue Alliance. This is done by updating the 'Advanced Stats' sheet.
 
+After a week of the executable being run you may get an error saying something about an expiry or not being able to refresh the token. To fix this you need to erase the file '_internal/token.json'. When you open the application again the Google pop up of the Cloud Project will show up again. This happens because the token file that acts as your credentials for the Google Sheets API expires after 7 days in some cases.
+
 ## Sheets
 Descriptions for all of the sheets that are available for creation. It is not necessary to create every one, but it is recommended.
 
