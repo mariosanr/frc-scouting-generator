@@ -54,6 +54,7 @@ def authenticate():
 def create_spreadsheet(title):
   
   spreadsheet = {"properties": {"title": title,
+                                "locale": "en_US",
                                 "defaultFormat":{"horizontalAlignment": 2,"wrapStrategy": 3}}}
   spreadsheet = (
       google_service.spreadsheets()
