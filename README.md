@@ -53,6 +53,6 @@ You will also need to set up the Google Cloud Project. The instructions for that
 
 To run the GUI_main.py file (which is the one that creates the GUI app), you need to be inside the 'src' folder.
 
-If you wish to contribute, please contact me through GitHub or email.
+If you wish to contribute, please contact me through GitHub or email: msrc2004@gmail.com
 
 Thank you for your interest!
